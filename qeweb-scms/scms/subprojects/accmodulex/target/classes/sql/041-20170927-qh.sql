@@ -1,0 +1,53 @@
+
+--要货看板
+INSERT INTO "QEWEB_VIEW" (
+	"ID",
+	"VIEW_CODE",
+	"VIEW_NAME",
+	"VIEW_ICON",
+	"VIEW_URL",
+	"VIEW_TYPE",
+	"PARENT_ID",
+	"IS_LEAF",
+	"MENU_SN",
+	"REMARK",
+	"ABOLISHED",
+	"CREATE_TIME",
+	"CREATE_USER_ID",
+	"LAST_UPDATE_TIME",
+	"UPDATE_USER_ID",
+	"CREATE_USER_NAME",
+	"UPDATE_USER_NAME",
+	"VIEW_NAME_ZH",
+	"PERMISSION",
+	"IS_VENDOR"
+)
+VALUES
+	(
+		'6081120',
+		'purchase_goods_request_report',
+		'要货看板',
+		NULL,
+		'manager/order/goodsRequest/report',
+		'0',
+		'6052067',
+		'0',
+		'2',
+		NULL,
+		'0',
+		TO_date (
+			'2017-06-19',
+			'YYYY-MM-DD'
+		),
+		'1',
+		TO_TIMESTAMP (
+			'2017-06-19',
+			'YYYY-MM-DD'
+		),
+		'1',
+		'超级管理员',
+		'超级管理员',
+		NULL,
+		NULL,
+		'N'
+	);

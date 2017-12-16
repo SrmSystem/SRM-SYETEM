@@ -1,0 +1,2 @@
+ALTER TABLE QEWEB_USER ADD (source NUMBER(1) DEFAULT 0);
+COMMENT ON COLUMN QEWEB_USER.source IS '数据来源 0：系统默认或创建 1：接口同步';

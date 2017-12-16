@@ -1,0 +1,1 @@
+alter table qeweb_inventory add reple_qty number(10,2);

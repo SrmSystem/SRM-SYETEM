@@ -1,0 +1,301 @@
+ALTER TABLE "QEWEB_MATERIAL"
+ADD ( "CDQWL" NVARCHAR2(100) NULL  ) ;
+
+
+
+
+
+
+CREATE OR REPLACE 
+PROCEDURE "PRO_GOODS_REQUEST_CLEAR_EXEC"(v_flag out number) AS 
+----------chao.gu 20171111 要货计划同步定时任务数据清理------------------
+----------参数：成功状态-------------------------------------------------
+----------将所有未创建ASN的供货计划返回订单和要货计划，------------------
+----------将已过期已有asn的供货计划返回订单和要货计划，------------------
+----------更新要货计划发布确认状态---------------------------------------
+begin 
+
+---将临时表进行清理start ,存的是这次发生变更的id
+delete from PURCHASE_GOODS_REQUEST_CLEAR;
+insert into PURCHASE_GOODS_REQUEST_CLEAR("ID") select REQUEST_ID FROM VIEW_CLEAR_REQUEST;
+--将临时表进行清理end
+
+
+-----------------------------所有无发货单的数据清理 start--------------------------------------
+--返回要货计划SUR_QRY
+	UPDATE PURCHASE_GOODS_REQUEST A
+SET SUR_QRY = SUR_QRY + (
+	SELECT
+		SUR_QRY
+	FROM
+		VIEW_NO_DLV_TO_REQUEST b
+	WHERE
+		A . ID = b. REQUEST_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			REQUEST_ID
+		FROM
+			VIEW_NO_DLV_TO_REQUEST
+	);
+
+
+--返回订单sur_order_qty
+UPDATE QEWEB_PURCHASE_ORDER_ITEM A
+SET sur_order_qty = sur_order_qty + (
+	SELECT
+		sur_order_qty
+	FROM
+		VIEW_NO_DLV_TO_ORDER b
+	WHERE
+		A . ID = b. ORDER_ITEM_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			ORDER_ITEM_ID
+		FROM
+			VIEW_NO_DLV_TO_ORDER
+	);
+
+--返回订单
+ UPDATE QEWEB_PURCHASE_ORDER_ITEM A
+SET sur_base_qty = sur_base_qty + (
+	SELECT
+		sur_base_qty
+	FROM
+		VIEW_NO_DLV_TO_ORDER b
+	WHERE
+		A . ID = b. ORDER_ITEM_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			ORDER_ITEM_ID
+		FROM
+			VIEW_NO_DLV_TO_ORDER
+	);
+
+ 
+
+
+
+-----------------------------所有无发货单的数据清理 end--------------------------------------
+-----------------------------删除已有发货单并且过期的数据start-------------------------------
+
+--返回订单sur_order_qty
+UPDATE QEWEB_PURCHASE_ORDER_ITEM A
+SET sur_order_qty = sur_order_qty + (
+	SELECT
+		sur_order_qty
+	FROM
+		VIEW_OVERDUE_DLV_TO_ORDER b
+	WHERE
+		A . ID = b. ORDER_ITEM_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			ORDER_ITEM_ID
+		FROM
+			VIEW_OVERDUE_DLV_TO_ORDER
+	);
+
+--返回订单
+ UPDATE QEWEB_PURCHASE_ORDER_ITEM A
+SET sur_base_qty = sur_base_qty + (
+	SELECT
+		sur_base_qty
+	FROM
+		VIEW_OVERDUE_DLV_TO_ORDER b
+	WHERE
+		A . ID = b. ORDER_ITEM_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			ORDER_ITEM_ID
+		FROM
+			VIEW_OVERDUE_DLV_TO_ORDER
+	);
+
+ --返回要货计划SUR_QRY
+	UPDATE PURCHASE_GOODS_REQUEST A
+SET SUR_QRY = SUR_QRY + (
+	SELECT
+		SUR_QRY
+	FROM
+		VIEW_OVERDUE_DLV_TO_REQUEST b
+	WHERE
+		A . ID = b. REQUEST_ID
+)
+WHERE
+	A . ID IN (
+		SELECT
+			REQUEST_ID
+		FROM
+			VIEW_OVERDUE_DLV_TO_REQUEST
+	);
+
+
+---删除供货计划
+update QEWEB_PURCHASE_ORDER_ITEM_PLAN  ITEM_PLAN set ITEM_PLAN.ABOLISHED=1 where ITEM_PLAN.TO_DELIVERY_QTY = 0
+		AND ITEM_PLAN.DELIVERY_QTY = 0
+		AND ITEM_PLAN.ABOLISHED = 0
+    AND ITEM_PLAN.SHIP_TYPE=1;
+
+---供货计划:去掉待发货数据
+---供货计划:去掉待发货数据
+UPDATE QEWEB_PURCHASE_ORDER_ITEM_PLAN ITEM_PLAN
+SET ITEM_PLAN.order_qty = (
+	ITEM_PLAN.DELIVERY_QTY + ITEM_PLAN.TO_DELIVERY_QTY
+),
+ ITEM_PLAN.UNDELIVERY_QTY = 0,
+ ITEM_PLAN.BASE_QTY = (
+	CASE
+	WHEN  (
+		SELECT
+			ORDER_ITEM.BPUMN
+		FROM
+			QEWEB_PURCHASE_ORDER_ITEM ORDER_ITEM
+		WHERE
+			ORDER_ITEM. ID = ITEM_PLAN.ORDER_ITEM_ID
+	) IS NOT NULL
+	AND  (
+		SELECT
+			ORDER_ITEM.BPUMZ
+		FROM
+			QEWEB_PURCHASE_ORDER_ITEM ORDER_ITEM
+		WHERE
+			ORDER_ITEM. ID = ITEM_PLAN.ORDER_ITEM_ID
+	) IS NOT NULL
+	AND  (
+		SELECT
+			ORDER_ITEM.BPUMN
+		FROM
+			QEWEB_PURCHASE_ORDER_ITEM ORDER_ITEM
+		WHERE
+			ORDER_ITEM. ID = ITEM_PLAN.ORDER_ITEM_ID
+	) > 0 THEN
+		(
+			NVL (
+				ITEM_PLAN.DELIVERY_QTY + ITEM_PLAN.TO_DELIVERY_QTY,
+				0
+			) *  (
+				SELECT
+					ORDER_ITEM.BPUMZ
+				FROM
+					QEWEB_PURCHASE_ORDER_ITEM ORDER_ITEM
+				WHERE
+					ORDER_ITEM. ID = ITEM_PLAN.ORDER_ITEM_ID
+			)
+		) /  (
+			SELECT
+				ORDER_ITEM.BPUMN
+			FROM
+				QEWEB_PURCHASE_ORDER_ITEM ORDER_ITEM
+			WHERE
+				ORDER_ITEM. ID = ITEM_PLAN.ORDER_ITEM_ID
+		)
+	ELSE
+		0
+	END
+)
+WHERE
+	ITEM_PLAN.ORDER_QTY - ITEM_PLAN.DELIVERY_QTY - ITEM_PLAN.TO_DELIVERY_QTY > 0
+AND ITEM_PLAN.REQUEST_TIME < TO_DATE (
+	TO_CHAR (SYSDATE, 'YYYY-MM-DD'),
+	'YYYY-MM-DD'
+)
+AND ITEM_PLAN.ABOLISHED = 0
+AND ITEM_PLAN.SHIP_TYPE = 1;
+
+-----------------------------删除已有发货单并且过期的数据end-------------------------------
+
+------------------------------更新临时表中的发布状态和供应商确认状态start-----------------------
+--更新供应商状态
+UPDATE PURCHASE_GOODS_REQUEST A
+SET A.VENDOR_CONFIRM_STATUS = nvl((
+	SELECT
+		CASE
+	WHEN MAX (ITEM_PAN.CONFIRM_STATUS) = 0
+	AND MIN (ITEM_PAN.CONFIRM_STATUS) = 0 THEN
+		0
+	WHEN MAX (ITEM_PAN.CONFIRM_STATUS) = 1
+	AND MIN (ITEM_PAN.CONFIRM_STATUS) = 1 THEN
+		1
+	ELSE
+		2
+	END AS VENDOR_CONFIRM_STATUS
+FROM
+	PURCHASE_GOODS_REQUEST REQ
+LEFT JOIN QEWEB_PURCHASE_ORDER_ITEM_PLAN ITEM_PAN ON REQ. ID = ITEM_PAN.GOODS_REQUEST_ID
+WHERE
+	ITEM_PAN.ABOLISHED = 0
+AND A . ID = REQ. ID
+AND ITEM_PAN.ABOLISHED = 0
+AND ITEM_PAN.SHIP_TYPE = 1
+AND REQ. ID IN (
+	SELECT
+		ID
+	FROM
+		PURCHASE_GOODS_REQUEST_CLEAR
+)
+GROUP BY
+	REQ. ID
+),0)
+WHERE
+	A . ID IN (
+		SELECT
+			ID
+		FROM
+			PURCHASE_GOODS_REQUEST_CLEAR
+	);
+
+--更新发布状态
+UPDATE PURCHASE_GOODS_REQUEST A
+SET A .PUBLISH_STATUS = nvl((
+	SELECT
+		CASE
+	WHEN MAX (ITEM_PAN.PUBLISH_STATUS) = 0
+	AND MIN (ITEM_PAN.PUBLISH_STATUS) = 0 THEN
+		0
+	WHEN MAX (ITEM_PAN.PUBLISH_STATUS) = 1
+	AND MIN (ITEM_PAN.PUBLISH_STATUS) = 1 THEN
+		1
+	ELSE
+		2
+	END AS PUBLISH_STATUS
+FROM
+	PURCHASE_GOODS_REQUEST REQ
+LEFT JOIN QEWEB_PURCHASE_ORDER_ITEM_PLAN ITEM_PAN ON REQ. ID = ITEM_PAN.GOODS_REQUEST_ID
+WHERE
+	ITEM_PAN.ABOLISHED = 0
+AND ITEM_PAN.ABOLISHED = 0
+AND ITEM_PAN.SHIP_TYPE = 1
+AND A . ID = REQ. ID
+AND REQ. ID IN (
+	SELECT
+		ID
+	FROM
+		PURCHASE_GOODS_REQUEST_CLEAR
+)
+GROUP BY
+	REQ. ID
+),0)
+WHERE
+	A . ID IN (
+		SELECT
+			ID
+		FROM
+			PURCHASE_GOODS_REQUEST_CLEAR
+	);
+------------------------------更新临时表中的发布状态和供应商确认状态end-----------------------
+commit;
+v_flag:=1;
+exception
+when others then
+    rollback;
+    v_flag:=-1;
+end;

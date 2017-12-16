@@ -1,0 +1,1 @@
+alter table qeweb_delivery add version nvarchar2(100);

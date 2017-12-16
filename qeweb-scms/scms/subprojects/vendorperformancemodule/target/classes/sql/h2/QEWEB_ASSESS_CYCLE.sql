@@ -1,0 +1,65 @@
+/*
+Navicat Oracle Data Transfer
+Oracle Client Version : 10.2.0.5.0
+
+Source Server         : 福田
+Source Server Version : 110200
+Source Host           : 221.224.132.210:1521
+Source Schema         : QEWEBREPOSITORIES
+
+Target Server Type    : ORACLE
+Target Server Version : 110200
+File Encoding         : 65001
+
+Date: 2015-08-12 12:59:57
+*/
+
+
+-- ----------------------------
+-- Table structure for QEWEB_ASSESS_CYCLE
+-- ----------------------------
+DROP TABLE "QEWEB_ASSESS_CYCLE";
+CREATE TABLE "QEWEB_ASSESS_CYCLE" (
+"ID" NUMBER(9) NOT NULL ,
+"CODE" NVARCHAR2(50) NULL ,
+"CYCLE_NAME" NVARCHAR2(50) NULL ,
+"INIT_DATES" NUMBER(2) NULL ,
+"FIX_DATES" NUMBER(2) NULL ,
+"REMARKS" NVARCHAR2(255) NULL ,
+"ABOLISHED" NUMBER(1) NULL ,
+"CREATE_TIME" TIMESTAMP(6)  NULL ,
+"CREATE_USER_ID" NUMBER(9) NULL ,
+"LAST_UPDATE_TIME" TIMESTAMP(6)  NULL ,
+"UPDATE_USER_ID" NUMBER(9) NULL ,
+"CREATE_USER_NAME" NVARCHAR2(100) NULL ,
+"UPDATE_USER_NAME" NVARCHAR2(100) NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."ID" IS '主键';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."INIT_DATES" IS '准备天数';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."FIX_DATES" IS '维度得分调整天数';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."ABOLISHED" IS '废除标记';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."CREATE_TIME" IS '创建时间';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."CREATE_USER_ID" IS '创建用户FK';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."LAST_UPDATE_TIME" IS '最后更新时间';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."UPDATE_USER_ID" IS '最后更新用户FK';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."CREATE_USER_NAME" IS '创建用户姓名';
+COMMENT ON COLUMN "QEWEB_ASSESS_CYCLE"."UPDATE_USER_NAME" IS '更新用户姓名';
+
+-- ----------------------------
+-- Indexes structure for table QEWEB_ASSESS_CYCLE
+-- ----------------------------
+
+-- ----------------------------
+-- Checks structure for table QEWEB_ASSESS_CYCLE
+-- ----------------------------
+ALTER TABLE "QEWEB_ASSESS_CYCLE" ADD CHECK ("ID" IS NOT NULL);
+
+-- ----------------------------
+-- Primary Key structure for table QEWEB_ASSESS_CYCLE
+-- ----------------------------
+ALTER TABLE "QEWEB_ASSESS_CYCLE" ADD PRIMARY KEY ("ID");

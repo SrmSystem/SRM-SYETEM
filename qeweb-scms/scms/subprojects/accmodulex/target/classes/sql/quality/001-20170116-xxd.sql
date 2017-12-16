@@ -1,0 +1,420 @@
+create table QEWEB_QM_BLANK_SCRAP
+(
+  ID                     NUMBER(9) not null,
+  START_TIME             TIMESTAMP(6),
+  END_TIME               TIMESTAMP(6),
+  MANUFACTURER_CODE      VARCHAR2(255),
+  MANUFACTURER           VARCHAR2(255),
+  DRAWING_NO             VARCHAR2(255),
+  PARTS_NAME             VARCHAR2(255),
+  AMOUNT                 NUMBER(9),
+  UNQUALIFIED_PHENOMENON VARCHAR2(255),
+  HANDLE                 VARCHAR2(255),
+  STATE                  NUMBER(1),
+  TOTAL                  NUMBER(9),
+  REJECTION_RATE         NUMBER(9),
+  ABOLISHED              NUMBER(1),
+  CREATE_TIME            TIMESTAMP(6),
+  CREATE_USER_ID         NUMBER(9),
+  LAST_UPDATE_TIME       TIMESTAMP(6),
+  UPDATE_USER_ID         NUMBER(9),
+  CREATE_USER_NAME       VARCHAR2(100 CHAR),
+  UPDATE_USER_NAME       VARCHAR2(100 CHAR),
+  UNQUALIFIED_AMOUNT     NUMBER(9),
+  VENDOR_ID              NUMBER(9),
+  MONTH                  NVARCHAR2(255),
+  TOTAL_AMOUNT           NUMBER(9)
+);
+
+create table QEWEB_8D_RECTIFICATION
+(
+  ID                      NUMBER(9) not null,
+  VENDOR_ID               NUMBER(9),
+  MATERIAL_ID             NUMBER(9),
+  HAPPEN_PLACE            NVARCHAR2(100),
+  MALFUNCTION_QTY         NUMBER(12,2),
+  REC_DESCRIPTION         NVARCHAR2(100),
+  STATUS                  NUMBER(1),
+  APPROVE_ADVICE          NVARCHAR2(100),
+  HAPPEN_TIME             TIMESTAMP(6),
+  ATTACHMENT_NAME         NVARCHAR2(100),
+  ATTACHMENT_PATH         NVARCHAR2(100),
+  ABOLISHED               NUMBER(1) not null,
+  CREATE_TIME             TIMESTAMP(6),
+  CREATE_USER_ID          NUMBER(9),
+  LAST_UPDATE_TIME        TIMESTAMP(6),
+  UPDATE_USER_ID          NUMBER(9),
+  CREATE_USER_NAME        NVARCHAR2(100),
+  UPDATE_USER_NAME        NVARCHAR2(100),
+  EIGHTD_REPORT_ID        NUMBER(9),
+  PUBLISH_STATUS          NUMBER(1),
+  REPROVE_STATUS          NUMBER(1),
+  REPROVE_ATTACHMENT_NAME NVARCHAR2(100),
+  REPROVE_ATTACHMENT_PATH NVARCHAR2(100)
+);
+
+create table QEWEB_8D_REPORT
+(
+  ID                   NUMBER(9) not null,
+  RECTIFICATION_ID     NUMBER(9) not null,
+  HAPPEN_PLACE         NVARCHAR2(100),
+  MALFUNCTION_QTY      NUMBER(12,2),
+  AFFECTED_BATCH_QTY   NUMBER(12,2),
+  REPORT_DESCRIPTION   NVARCHAR2(100),
+  REASON               NVARCHAR2(100),
+  MEASURE_VERIFICATION NVARCHAR2(100),
+  SPECIAL_MARK         NVARCHAR2(100),
+  ABOLISHED            NUMBER(1) not null,
+  CREATE_TIME          TIMESTAMP(6),
+  CREATE_USER_ID       NUMBER(9),
+  LAST_UPDATE_TIME     TIMESTAMP(6),
+  UPDATE_USER_ID       NUMBER(9),
+  CREATE_USER_NAME     NVARCHAR2(100),
+  UPDATE_USER_NAME     NVARCHAR2(100)
+);
+
+create table QEWEB_8D_REPORT_DETAIL
+(
+  ID                  NUMBER(9) not null,
+  RECTIFICATION_ID    NUMBER(9) not null,
+  REPORT_TYPE         NUMBER(1) not null,
+  ABOLISHED           NUMBER(1) not null,
+  CREATE_TIME         TIMESTAMP(6),
+  CREATE_USER_ID      NUMBER(9),
+  LAST_UPDATE_TIME    TIMESTAMP(6),
+  UPDATE_USER_ID      NUMBER(9),
+  CREATE_USER_NAME    NVARCHAR2(100),
+  UPDATE_USER_NAME    NVARCHAR2(100),
+  SIM_MATERIAL_ID     NUMBER(9),
+  SIM_IS_PROBLEM      NUMBER(1),
+  SIM_REMARK          NVARCHAR2(100),
+  TEM_CONSIDER_MATTER NVARCHAR2(100),
+  TEM_QUALIFIED_QTY   NUMBER(12,2),
+  TEM_UNQUALIFIED_QTY NUMBER(12,2),
+  TEM_HANDLE_WAY      NVARCHAR2(100),
+  REA_CATEGORY        NVARCHAR2(100),
+  REA_IS_PROBLEM      NUMBER(1),
+  REA_ROOT_CAUSE      NVARCHAR2(100),
+  REA_CONFIRMED_WAY   NVARCHAR2(100),
+  REA_FINISH_TIME     TIMESTAMP(6),
+  MAK_NUMBER          NUMBER(5),
+  MAK_ROOT_CAUSE      NVARCHAR2(100),
+  MAK_EVIDENCE        NVARCHAR2(100),
+  MAK_DUTY_DEPT       NVARCHAR2(100),
+  MAK_FINISH_TIME     TIMESTAMP(6),
+  FIL_NAME            NVARCHAR2(100),
+  FIL_YES             NUMBER(1),
+  FIL_DEPT            NVARCHAR2(100),
+  FIL_TIME            TIMESTAMP(6),
+  FIL_EVIDENCE        NVARCHAR2(100)
+);
+
+create table QEWEB_QM_INFACTORYUNQU
+(
+  ID               NUMBER(9) not null,
+  START_TIME       TIMESTAMP(6),
+  END_TIME         TIMESTAMP(6),
+  VENDOR_ID        NUMBER(9),
+  MATERIAL_ID      NUMBER(9),
+  TOTAL_NUMBER     NUMBER(9),
+  DESCRIBE         NVARCHAR2(1000),
+  DISPOSE          NUMBER(1),
+  SAMPLINGS        NUMBER(9),
+  UNQUALIFIED      NUMBER(9),
+  PPM              NUMBER(9),
+  QUALITY_STATUS   NUMBER(1),
+  ABOLISHED        NUMBER(1),
+  CREATE_TIME      TIMESTAMP(6),
+  CREATE_USER_ID   NUMBER(9),
+  LAST_UPDATE_TIME TIMESTAMP(6),
+  UPDATE_USER_ID   NUMBER(9),
+  CREATE_USER_NAME NVARCHAR2(100),
+  UPDATE_USER_NAME NVARCHAR2(100),
+  PARTYB_COUNTS    NVARCHAR2(255),
+  DELIVERY_PPM     NVARCHAR2(255),
+  MONTH            NVARCHAR2(255)
+);
+
+create table QEWEB_QM_NEWPRODUCT
+(
+  ID               NUMBER(9) not null,
+  SEQ              NVARCHAR2(50),
+  QM_TIME          TIMESTAMP(6),
+  MAT_ID           NUMBER,
+  MAT_CODE         NVARCHAR2(50),
+  MAT_NAME         NVARCHAR2(100),
+  VENDOR_ID        NUMBER,
+  VENDOR_CODE      NVARCHAR2(50),
+  VENDOR_NAME      NVARCHAR2(100),
+  SAMPLE_SIZE      NUMBER(9),
+  DELIVER_TIMES    NUMBER(2),
+  QUALIFIED        NUMBER(1),
+  DATA_STATUS      NUMBER(1),
+  REMARK           NVARCHAR2(255),
+  ABOLISHED        NUMBER(1),
+  CREATE_TIME      TIMESTAMP(6),
+  CREATE_USER_ID   NUMBER(9),
+  LAST_UPDATE_TIME TIMESTAMP(6),
+  UPDATE_USER_ID   NUMBER(9),
+  CREATE_USER_NAME NVARCHAR2(100),
+  UPDATE_USER_NAME NVARCHAR2(100),
+  MONTH            NVARCHAR2(255)
+);
+
+create table QEWEB_QM_ONLINEINSPECTION
+(
+  ID               NUMBER(9) not null,
+  START_TIME       TIMESTAMP(6),
+  CODE             NVARCHAR2(255),
+  VENDOR_ID        NUMBER(9),
+  MATERIAL_ID      NUMBER(9),
+  TOTAL_NUMBER     NUMBER(9),
+  DESCRIBE         NVARCHAR2(255),
+  STAGES           NUMBER(1),
+  MONEY            NUMBER(9),
+  QUALITY_STATUS   NUMBER(1),
+  ABOLISHED        NUMBER(1),
+  CREATE_TIME      TIMESTAMP(6),
+  CREATE_USER_ID   NUMBER(9),
+  LAST_UPDATE_TIME TIMESTAMP(6),
+  UPDATE_USER_ID   NUMBER(9),
+  CREATE_USER_NAME NVARCHAR2(100),
+  UPDATE_USER_NAME NVARCHAR2(100),
+  EIGHTD_STATUS    NUMBER(1)
+);
+
+create table QEWEB_QM_POSTSALESSERVICE
+(
+  ID               NUMBER(9) not null,
+  START_TIME       TIMESTAMP(6),
+  END_TIME         TIMESTAMP(6),
+  VENDOR_ID        NUMBER(9),
+  MATERIAL_ID      NUMBER(9),
+  REPAIR_TIME      TIMESTAMP(6),
+  CODE             NVARCHAR2(255),
+  GENERATINGS      NVARCHAR2(255),
+  HOSTS            NVARCHAR2(255),
+  MODELS           NVARCHAR2(255),
+  TOTAL_NUMBER     NUMBER(9),
+  DESCRIBE         NVARCHAR2(255),
+  DRIVING          NVARCHAR2(255),
+  AGREEMENT        NVARCHAR2(255),
+  TOTALMODEL       NVARCHAR2(255),
+  OUTCODE          NVARCHAR2(255),
+  AREA             NVARCHAR2(255),
+  STATION          NVARCHAR2(255),
+  FAULT            NVARCHAR2(255),
+  REASON           NVARCHAR2(255),
+  QUALITY_STATUS   NUMBER(1),
+  ABOLISHED        NUMBER(1),
+  CREATE_TIME      TIMESTAMP(6),
+  CREATE_USER_ID   NUMBER(9),
+  LAST_UPDATE_TIME TIMESTAMP(6),
+  UPDATE_USER_ID   NUMBER(9),
+  CREATE_USER_NAME NVARCHAR2(100),
+  UPDATE_USER_NAME NVARCHAR2(100),
+  TOTAL_COUNTS     NUMBER(9),
+  SALE_PPM         NVARCHAR2(255),
+  MONTH            NVARCHAR2(255)
+);
+
+create table QEWEB_QM_PPM
+(
+  ID               NUMBER(11) not null,
+  VENDOR_ID        NUMBER(11) not null,
+  MONTH            NVARCHAR2(64) not null,
+  RATE             NUMBER(11,2),
+  PPM              NUMBER(11,2),
+  PPM_TYPE         NUMBER(2) not null,
+  COL1             NVARCHAR2(64),
+  COL2             NVARCHAR2(64),
+  COL3             NVARCHAR2(64),
+  COL4             NVARCHAR2(64),
+  COL5             NVARCHAR2(64),
+  CREATE_TIME      DATE,
+  LAST_UPDATE_TIME DATE,
+  CREATE_USER_ID   NUMBER(11),
+  UPDATE_USER_ID   NUMBER(11),
+  CREATE_USER_NAME NVARCHAR2(64),
+  UPDATE_USER_NAME NVARCHAR2(64),
+  ABOLISHED        NUMBER(1) not null,
+  MATERIAL_ID      NUMBER(11)
+);
+
+create table QEWEB_QM_QUALITY_IMPROVE
+(
+  ID                NUMBER(9) not null,
+  VENDOR_ID         NUMBER(9),
+  VENDOR_CODE       NVARCHAR2(50),
+  VENDOR_NAME       NVARCHAR2(100),
+  INFORM_FILE_NAME  NVARCHAR2(50),
+  INFORM_FILE_PATH  NVARCHAR2(100),
+  IMPROVE_FILE_NAME NVARCHAR2(50),
+  IMPROVE_FILE_PATH NVARCHAR2(100),
+  DATA__STATUS      NUMBER(1),
+  ABOLISHED         NUMBER(1),
+  CREATE_TIME       TIMESTAMP(6),
+  CREATE_USER_ID    NUMBER(9),
+  LAST_UPDATE_TIME  TIMESTAMP(6),
+  UPDATE_USER_ID    NUMBER(9),
+  CREATE_USER_NAME  NVARCHAR2(100),
+  UPDATE_USER_NAME  NVARCHAR2(100),
+  DATA_STATUS       NUMBER(1),
+  IMPROVE_STATUS    NUMBER(1)
+);
+
+create table QEWEB_QM_TWOAUDIT
+(
+  ID                     NUMBER(9) not null,
+  WORK_ORDER             NVARCHAR2(50),
+  ORG_ID                 NUMBER(9),
+  CORRECTION_DATE        TIMESTAMP(6),
+  REQUIRE_DATE           TIMESTAMP(6),
+  CORRECTION_STATUS      NUMBER(11),
+  END_STATUS             NUMBER(11),
+  CORRECTION_CONTENT     NVARCHAR2(255),
+  PLAN_FILE_PATH         NVARCHAR2(255),
+  CORRECTION_END_CONTENT NVARCHAR2(255),
+  REPORT_FILE_PATH       NVARCHAR2(255),
+  ABOLISHED              NUMBER(1),
+  CREATE_TIME            TIMESTAMP(6),
+  CREATE_USER_ID         NUMBER(9),
+  LAST_UPDATE_TIME       TIMESTAMP(6),
+  UPDATE_USER_ID         NUMBER(9),
+  CREATE_USER_NAME       NVARCHAR2(100),
+  UPDATE_USER_NAME       NVARCHAR2(100),
+  CORRECTIVE_TIME        TIMESTAMP(6),
+  REPORT_TIME            TIMESTAMP(6),
+  DATA_STATUS            NUMBER(1)
+);
+
+create table QEWEB_QM_CSOLUTION
+(
+  ID               NUMBER(9) not null,
+  TWOAUDIT_ID      NUMBER(9),
+  SOLUTION_CONTENT NVARCHAR2(255),
+  CURRENT_VERSION  NUMBER(1),
+  AUDIT_STATUS     NUMBER(1),
+  AUDIT_REASON     NVARCHAR2(255),
+  ABOLISHED        NUMBER(1),
+  CREATE_TIME      TIMESTAMP(6),
+  CREATE_USER_ID   NUMBER(9),
+  LAST_UPDATE_TIME TIMESTAMP(6),
+  UPDATE_USER_ID   NUMBER(9),
+  CREATE_USER_NAME NVARCHAR2(100),
+  UPDATE_USER_NAME NVARCHAR2(100),
+  FILE_URL         NVARCHAR2(255)
+);
+
+create table QEWEB_QM_ZERO_KILOMETERS
+(
+  ID                  NUMBER(9) not null,
+  START_TIME          TIMESTAMP(6),
+  END_TIME            TIMESTAMP(6),
+  REPORT_CODE         VARCHAR2(50),
+  VENDOR_ID           NUMBER(9),
+  VENDOR_CODE         VARCHAR2(50),
+  VENDOR_NAME         VARCHAR2(100),
+  FIRST_PICTURE_CODE  VARCHAR2(50),
+  FIRST_PICTURE_NAME  VARCHAR2(100),
+  FACTORY             VARCHAR2(100),
+  MOTOR_FACTORY       VARCHAR2(100),
+  MODELS              VARCHAR2(100),
+  COUNTS              NUMBER(9),
+  MILEAGE             NUMBER(9),
+  MAINTENANCE_TIME    TIMESTAMP(6),
+  STATUS              NUMBER(1),
+  ABOLISHED           NUMBER(1),
+  CREATE_TIME         TIMESTAMP(6),
+  CREATE_USER_ID      NUMBER(9),
+  LAST_UPDATE_TIME    TIMESTAMP(6),
+  UPDATE_USER_ID      NUMBER(9),
+  CREATE_USER_NAME    VARCHAR2(100 CHAR),
+  UPDATE_USER_NAME    VARCHAR2(100 CHAR),
+  STANDARD_FAULT      VARCHAR2(100),
+  AGREEMENT_NO        VARCHAR2(100),
+  ASSEMBLY_MODEL      VARCHAR2(100),
+  APPEARANCE_NUMBER   VARCHAR2(100),
+  AREA                VARCHAR2(100),
+  SERVICE_STATION     VARCHAR2(100),
+  FAULT_DESCRIPTION   VARCHAR2(255),
+  CAUSE_AND_ANALYSIS  VARCHAR2(255),
+  TOTAL_COUNTS        NUMBER(9),
+  ZERO_KILOMETERS_PPM VARCHAR2(100),
+  QUALITY_REQUEST     VARCHAR2(255),
+  MATERIAL_ID         NUMBER(11),
+  MONTH               NVARCHAR2(255)
+);
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1042076, 'qualityassurance', '质量管理', '', '', 0, 0, 0, 39, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045546, 'qualityassurance_PostSalesService', '售后质量信息管理', '', 'manager/qualityassurance/PostSalesService/', 0, 1042076, 0, 11, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045556, 'qualityassurance_blankScrapVenfor', '毛坯废品信息管理（供方）', '', 'manager/qualityassurance/blankScrap/vendor/', 0, 1042076, 0, 14, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1204072, 'qualityassurance_zeroKilometers_ppm', '零公里PPM', '', 'manager/qualityassurance/ppm/3', 0, 1042076, 0, 21, '', 0, '2016-03-28 16:16:02:973000', 1, '2016-03-28 16:16:02:973000', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1204079, 'qualityassurance_Newproduct_ppm', 'PPAP一次通过率', '', 'manager/qualityassurance/ppm/5', 0, 1042076, 0, 23, '', 0, '2016-03-28 16:16:57:798000', 1, '2016-03-28 16:16:57:798000', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1042077, 'qualityassurance_eightD', '8D整改管理', '', 'manager/qualityassurance/eightD/', 0, 1042076, 0, 1, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045505, 'qualityassurance_OnlineInspection', '在线稽查不合格信息管理', '', 'manager/qualityassurance/OnlineInspection/', 0, 1042076, 0, 7, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045533, 'qualityassurance_twoAuditVendor', '二方审核管理（供方）', '', 'manager/qualityassurance/twoAudit/getCorrectionSolution', 0, 1042076, 0, 4, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045541, 'qualityassurance_InFactoryUnqualifiedVendor', '入厂检验不合格信息管理（供方）', '', 'manager/qualityassurance/InFactoryUnqualified/vendor/', 0, 1042076, 0, 6, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045544, 'qualityassurance_zeroKilometersVendor', '零公里不合格信息管理（供方）', '', 'manager/qualityassurance/zeroKilometers/vendor/', 0, 1042076, 0, 10, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045557, 'qualityassurance_blankScrap', '毛坯废品信息管理', '', 'manager/qualityassurance/blankScrap/', 0, 1042076, 0, 13, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045558, 'qualityassurance_Newproduct', '新产品开发质量', '', 'manager/qualityassurance/Newproduct/', 0, 1042076, 0, 17, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045513, 'qualityassurance_zeroKilometers', '零公里不合格信息管理', '', 'manager/qualityassurance/zeroKilometers/', 0, 1042076, 0, 9, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045527, 'qualityassurance_eightDVendor', '8D整改管理（供方）', '', 'manager/qualityassurance/eightD/vendor/', 0, 1042076, 0, 2, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045493, 'qualityassurance_twoAudit', '二方审核管理', '', 'manager/qualityassurance/twoAudit/', 0, 1042076, 0, 3, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045542, 'qualityassurance_OnlineInspectionVendor', '在线稽查不合格信息管理（供方）', '', 'manager/qualityassurance/OnlineInspection/vendor/', 0, 1042076, 0, 8, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045552, 'qualityassurance_PostSalesServiceVenfor', '售后质量信息管理（供方）', '', 'manager/qualityassurance/PostSalesService/vendor/', 0, 1042076, 0, 12, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045559, 'qualityassurance_NewproductVendor', '新产品开发质量（供方）', '', 'manager/qualityassurance/Newproduct/vendor/', 0, 1042076, 0, 18, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045562, 'qualityassurance_qualityImproveVendor', '质量改进管理（供方）', '', 'manager/qualityassurance/qualityImprove/vendor/', 0, 1042076, 0, 16, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045497, 'qualityassurance_InFactoryUnqualified', '入厂检验不合格信息管理', '', 'manager/qualityassurance/InFactoryUnqualified/', 0, 1042076, 0, 5, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1045563, 'qualityassurance_qualityImprove', '质量改进管理', '', 'manager/qualityassurance/qualityImprove/', 0, 1042076, 0, 15, '', 0, '', 1, '', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1204066, 'qualityassurance_InFactoryUnqualified_ppm', '交付PPM', '', 'manager/qualityassurance/ppm/1', 0, 1042076, 0, 19, '', 0, '2016-03-28 16:14:38:436000', 1, '2016-03-28 16:14:38:436000', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1204069, '	 qualityassurance_blankScrap_ppm', '毛坯废品率', '', 'manager/qualityassurance/ppm/2', 0, 1042076, 0, 20, '', 0, '2016-03-28 16:15:10:099000', 1, '2016-03-28 16:15:10:099000', 1, '超级管理员,', '超级管理员,', '', '');
+
+insert into qeweb_view (ID, VIEW_CODE, VIEW_NAME, VIEW_ICON, VIEW_URL, VIEW_TYPE, PARENT_ID, IS_LEAF, MENU_SN, REMARK, ABOLISHED, CREATE_TIME, CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME, VIEW_NAME_ZH, PERMISSION)
+values (1204076, 'qualityassurance_PostSalesService_ppm', '售后PPM', '', 'manager/qualityassurance/ppm/4', 0, 1042076, 0, 22, '', 0, '2016-03-28 00:00:00:000000', 1, '2016-03-28 00:00:00:000000', 1, '超级管理员,', '超级管理员,', '', '');
+

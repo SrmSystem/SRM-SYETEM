@@ -1,0 +1,15 @@
+alter table qeweb_delivery add col16 nvarchar2(100);
+alter table qeweb_delivery add col17 nvarchar2(100);
+alter table qeweb_delivery add col18 nvarchar2(100);
+alter table qeweb_delivery add col19 nvarchar2(100);
+alter table qeweb_delivery add col20 nvarchar2(100);
+alter table qeweb_delivery add col21 nvarchar2(100);
+alter table qeweb_delivery add col22 nvarchar2(100);
+alter table qeweb_delivery add col23 nvarchar2(100);
+alter table qeweb_delivery add col24 nvarchar2(100);
+alter table qeweb_delivery add col25 nvarchar2(100);
+alter table qeweb_delivery add col26 nvarchar2(100);
+alter table qeweb_delivery add col27 nvarchar2(100);
+alter table qeweb_delivery add col28 nvarchar2(100);
+alter table qeweb_delivery add col29 nvarchar2(100);
+alter table qeweb_delivery add col30 nvarchar2(100);

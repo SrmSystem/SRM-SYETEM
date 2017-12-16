@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <table id="systemCertificate">
+   <thead>
+     <field id="col1" name="体系证书" type="text"></field>
+     <field id="col2" name="证书类型" type="text"></field>
+     <field id="col3" name="附件" type="file"></field>
+     <field id="col4" name="通过时间" type="date"></field>
+     <field id="col5" name="到期时间" type="date"></field>
+     <field id="col6" name="认证机构" type="text"></field>
+     <field id="col7" name="覆盖产品" type="text"></field>
+   </thead>
+ </table>
+
+</root>

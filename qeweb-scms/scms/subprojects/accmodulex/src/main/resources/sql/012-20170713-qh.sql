@@ -1,0 +1,2 @@
+INSERT INTO "QEWEB_ROLE_DATA_CFG" ("ID", "DATA_CODE", "DATA_NAME", "DATA_CLAZZ", "DATA_SCOPE", "REMARK") VALUES ('8', '8', '公司权限', 'companyEntity', 'select id,code,name from  CompanyEntity where abolished = 0', NULL);
+INSERT INTO "QEWEB_ROLE_DATA_CFG" ("ID", "DATA_CODE", "DATA_NAME", "DATA_CLAZZ", "DATA_SCOPE", "REMARK") VALUES ('9', '9', '工厂权限', 'factoryEntity', 'select id,code,name from FactoryEntity where abolished = 0', NULL);

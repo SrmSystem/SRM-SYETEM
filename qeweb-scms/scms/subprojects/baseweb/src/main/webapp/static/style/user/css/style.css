@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+
+/*index start*/
+.body_main{width:100%;}
+.box_title{background:url('../images/box_top.png') no-repeat scroll center top transparent;width:991px;height:80px;padding:0;}
+.box_title .text_content{text-align:center;padding:20px 0 10px 0;}
+.box_title .text_content h1{font-weight:normal;}
+.box_main{background:#ffffff;width:100%;;overflow:hidden !important;}
+.box_bottom{background:url('../images/box_bottom.png') no-repeat scroll center top transparent;width:991px;height:7px;padding:0;}
+/*Tooltips*/
+.tooltips_main{position:absolute;left:0;margin:-5px 0 0 2px;z-index:999;}
+.tooltips_box,.tooltips,.msg{display:inline-block;*display:inline;*zoom:1;position:relative;border-style:solid;border-color:#FF1F1F;}
+.tooltips,.msg{*left:-2px;background-color:#FFCFCF;}
+.tooltips_box{line-height:1.5;}
+.tooltips{margin:0 -2px;}
+.msg{margin:1px -2px;padding:0 6px;color:#2F2C2C;text-shadow:0 1px 0 #FFFFFF;font-size:12px;}
+.ov{background:url('../images/tri.gif') no-repeat scroll 0 0 transparent;position:absolute;left:30%;overflow:hidden;width:15px;height:15px;margin:16px 0 0 0;display:inline;}
+/*regist*/
+.register{float:left;padding:25px 50px;}
+.register .form_submit{float:left;border-bottom:1px solid #bfbfbf;width:100%;}
+.register .form_submit .fieldset{float:left;}
+.register .form_submit .fieldset .field-group{float:left;height:55px;}
+.register .form_submit .fieldset .field-group .title{float:left;width:120px;text-align:right;margin:4px 0 0 0;font-size:14px;}
+.register .form_submit .fieldset .field-group .control-group{float:left;width:350px;margin:0 10px;}
+.register .form_submit .fieldset .field-group .tips{float:left;width:160px;color:#8E8E8E;}
+.register .div_submit{float:left;width:100%;margin:10px 5px;}
+.register .div_submit .div_submit_button{float:right;}
+/*end regist*/
+.fieldset .input_add_background{background:url("../images/input.jpg") no-repeat scroll 100% 100% transparent;background-position: center;height:30px;width:157px;float:left;margin:0 2px 0 0;}
+.fieldset .input_add_background input.register_input_ot{background-color:#f9f9f9;border:0 none;color:#4F4F4F;font-size:12px;height:18px;outline:medium none;width: 145px;padding:1px;margin:5px;}
+.fieldset .input_add_long_background{background:url("../images/input_long.jpg") no-repeat scroll 100% 100% transparent;background-position: center;height:30px;width:286px;float:left;margin:0 0 15px 0;display:inline;}
+.fieldset .input_add_long_light_background{background:url("../images/input_long_light.jpg") no-repeat scroll 100% 100% transparent;background-position: center;height:30px;width:286px;float:left;}
+.fieldset .input_add_long_background input.register_input{background-color:#f9f9f9;border:0 none;color:#4F4F4F;font-size:12px;height:18px;outline:medium none;width: 270px;padding:1px;margin:5px;}
+.fieldset .input_text{display:inline-block;position:absolute;vertical-align:top;margin:6px 0 0 10px;z-index:2;font-style:italic;color:#BFBFBF;}

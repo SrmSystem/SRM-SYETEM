@@ -1,0 +1,2 @@
+供应商和物料分类关系(#orgId-组织ID):/public/vendor/rel/getMaterialType/#orgId
+主要产品：/public/basedata/getMaterialTypeByLevel/3

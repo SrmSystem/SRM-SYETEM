@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <form id="form1" title="员工规模信息">
+     <field id="attr1" name="职工总人数" type="text"></field>
+     <field id="attr2" name="其中高级职称人数" type="text"></field>
+     <field id="attr3" name="其中中级职称人数" type="text"></field>
+     <field id="attr4" name="管理人员数量" type="text"></field>
+     <field id="attr5" name="其中高级职称人数" type="text"></field>
+     <field id="attr6" name="其中中级职称人数" type="text"></field>
+     <field id="attr7" name="研发人员数量" type="text"></field>
+     <field id="attr8" name="其中高级职称人数" type="text"></field>
+     <field id="attr9" name="其中中级职称人数" type="text"></field>
+     <field id="attr10" name="生产制造人员数量" type="text"></field>
+     <field id="attr11" name="其中高级职称人数" type="text"></field>
+     <field id="attr12" name="其中中级职称人数" type="text"></field>
+     <field id="attr13" name="质量人员数量" type="text"></field>
+     <field id="attr14" name="其中高级职称人数" type="text"></field>
+     <field id="attr15" name="其中中级职称人数" type="text"></field>
+     <field id="attr16" name="过去12个月的人员波动情况(% +/-)" type="text"></field>
+   </form>
+   <form id="form2" title="员工学历信息">
+     <field id="attr17" name="硕士以上人数" type="text"></field>
+     <field id="attr18" name="本科人数" type="text"></field>
+     <field id="attr19" name="本科以下人数" type="text"></field>
+     <field id="attr20" name="硕士以上人数比例" type="text"></field>
+     <field id="attr21" name="本科人数比例" type="text"></field>
+     <field id="attr22" name="本科以下人数比例" type="text"></field>
+  </form>
+</root>

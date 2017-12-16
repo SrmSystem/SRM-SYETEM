@@ -1,0 +1,62 @@
+/*
+Navicat Oracle Data Transfer
+Oracle Client Version : 10.2.0.5.0
+
+Source Server         : 福田
+Source Server Version : 110200
+Source Host           : 221.224.132.210:1521
+Source Schema         : QEWEBREPOSITORIES
+
+Target Server Type    : ORACLE
+Target Server Version : 110200
+File Encoding         : 65001
+
+Date: 2015-08-12 13:05:09
+*/
+
+
+-- ----------------------------
+-- Table structure for QEWEB_ASSESS_PURCHASE
+-- ----------------------------
+DROP TABLE "QEWEB_ASSESS_PURCHASE";
+CREATE TABLE "QEWEB_ASSESS_PURCHASE" (
+"ID" NUMBER(9) NOT NULL ,
+"MATERIALTYPE_ID" NUMBER(9) NULL ,
+"CYCLE_ID" NUMBER(9) NULL ,
+"PURCHASE_NUMBER" NUMBER(11) NULL ,
+"ABOLISHED" NUMBER(1) NULL ,
+"CREATE_TIME" TIMESTAMP(6)  NULL ,
+"CREATE_USER_ID" NUMBER(9) NULL ,
+"LAST_UPDATE_TIME" TIMESTAMP(6)  NULL ,
+"UPDATE_USER_ID" NUMBER(9) NULL ,
+"CREATE_USER_NAME" NVARCHAR2(100) NULL ,
+"UPDATE_USER_NAME" NVARCHAR2(100) NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."ID" IS '物料ID';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."MATERIALTYPE_ID" IS '物料类别ID';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."ABOLISHED" IS '废除标记';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."CREATE_TIME" IS '创建时间';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."CREATE_USER_ID" IS '创建用户FK';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."LAST_UPDATE_TIME" IS '最后更新时间';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."UPDATE_USER_ID" IS '最后更新用户FK';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."CREATE_USER_NAME" IS '创建用户姓名';
+COMMENT ON COLUMN "QEWEB_ASSESS_PURCHASE"."UPDATE_USER_NAME" IS '更新用户姓名';
+
+-- ----------------------------
+-- Indexes structure for table QEWEB_ASSESS_PURCHASE
+-- ----------------------------
+
+-- ----------------------------
+-- Checks structure for table QEWEB_ASSESS_PURCHASE
+-- ----------------------------
+ALTER TABLE "QEWEB_ASSESS_PURCHASE" ADD CHECK ("ID" IS NOT NULL);
+
+-- ----------------------------
+-- Primary Key structure for table QEWEB_ASSESS_PURCHASE
+-- ----------------------------
+ALTER TABLE "QEWEB_ASSESS_PURCHASE" ADD PRIMARY KEY ("ID");

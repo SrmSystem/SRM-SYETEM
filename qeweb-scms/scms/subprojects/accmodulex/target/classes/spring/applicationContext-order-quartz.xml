@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd" >
+    <description>spring quartz</description>
+
+
+    
+   <!-- 收货接口 -->
+   	<bean id="orderReceiveTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.purchasemodule.task.OrderReceiveTask</value>
+		</property>
+		<property name="description">
+			<value>采购订单的收货 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="orderReceiveTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="orderReceiveTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 1/30 * * * ?</value><!-- 每30分钟触发 -->
+        </property>
+    </bean>
+    
+       <!-- 退货接口 -->
+   	<bean id="orderReturnTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.purchasemodule.task.OrderReturnTask</value>
+		</property>
+		<property name="description">
+			<value>采购订单的退货 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="orderReturnTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="orderReturnTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 2/30 * * * ?</value><!-- 每30分钟触发 -->
+        </property>
+    </bean>
+    
+
+
+      <!-- 要货计划接口 -->
+   	<bean id="purchaseGoodsRequestTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.purchasemodule.task.PurchaseGoodsRequestTask</value>
+		</property>
+		<property name="description">
+			<value>要货计划同步 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="purchaseGoodsRequestTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="purchaseGoodsRequestTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value><!-- 凌晨1点触发 -->
+        </property>
+    </bean>
+   
+   
+   
+   
+   
+   
+</beans>

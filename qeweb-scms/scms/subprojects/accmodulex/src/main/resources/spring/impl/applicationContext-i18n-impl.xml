@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
+	<description>spring 国际化配置</description>
+
+	<!-- 配置国际化资源文件路径 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="basenames">
+			<!-- 定义消息资源文件的相对路径 -->
+			<list>
+				<value>messages/messages_base</value>
+				<value>messages/messages_purchase_metal</value>
+				<value>messages/orderplan/messages_vendor_orderplan</value>
+				<value>messages/orderMain/messages_orderMain_metal</value>
+				<value>messages/abnormal/messages_vendor_abnormal</value>
+				<value>messages/file/messages_vendor_file</value>
+				<value>messages/menu/messages_vendor_menu</value>
+				<value>messages/check/messages_vendor_check</value>
+				<value>messages/delivery/messages_delivery_metal</value>
+				<value>messages/basedata/messages_basedata_metal</value>
+				<value>messages/order/messages_order_metal</value>
+				<value>messages/org/messages_vendor_org</value>
+				<value>messages/common/messages_vendor_common</value>
+				<value>messages/user/messages_vendor_user</value>
+				<value>messages/receive/messages_vendor_receive</value>
+				<value>messages/viewMenu/messages_view_menu</value>
+				<value>messages/organizationStructure/messages_organizationStructure_metal</value>
+				<value>messages/font/messages_font_metal</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 基于Cookie的本地化解析器 -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieMaxAge" value="604800" />
+		<property name="defaultLocale" value="zh" />
+		<property name="cookieName" value="Language"></property>
+	</bean>
+	<!-- 基于Session的本地化解析器 -->
+	<!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" /> -->
+
+</beans>

@@ -1,0 +1,10 @@
+#for tests only !
+#Fri Jul 14 21:17:26 GMT+08:00 2017
+jco.client.lang=zh
+jco.client.client=800
+jco.destination.peak_limit=10
+jco.client.passwd=Aac.1234
+jco.client.user=QSRM
+jco.client.sysnr=00
+jco.destination.pool_capacity=3
+jco.client.ashost=10.128.96.132

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: qeweb-scms-vendormodule
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: 60053060
+Implementation-Vendor-Id: com.qeweb
+Build-Jdk: 1.8.0_131
+Created-By: Maven Integration for Eclipse
+

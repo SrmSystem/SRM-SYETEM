@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+发送邮件的模板设置
+-->
+<configs>
+    <!-- 一般模板 -->
+    <!--
+    name : 模板名称
+    sender : 发送人名称
+    subject : 邮件标题
+    -->    
+    <template name="tempName" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $orgName，您好：
+                <p/>                
+      $message
+                <br/>
+                <br/>            
+      $userName
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    
+    <template name="inviteReg" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+                <p/>
+                $tempMessage                
+                <p/>                
+          您可以$message您的供应商账号，或复制以下链接进行注册并填写基本信息。（请在$expiryDate前完成注册）
+          <br/>
+          $link 
+                <br/>
+               
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>
+        ]]>
+    </template>
+    <template name="regSuccess" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName公司：
+                <p/>  
+     你好！
+     贵公司的供应商注册申请已成功，福田汽车会对贵公司的注册信息进行审核，请继续关注。
+     <br/>
+     您可以使用账号$message系统继续您的操作。
+           <br/>
+          $link 
+                <br/>
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    <template name="qualifications" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+                <p/>                
+          	贵公司 $fileName 资质文件即将到期，为了规避审计合规风险，不影响双方的合作，请尽快登录系统上传更新的文件。
+          <br/>
+                <br/>
+                <br/>            
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+        <template name="confirmVendor" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+                <p/>                
+          	您的注册信息已被确认！
+          <br/>
+                <br/>
+                <br/>            
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>]]>
+          </template>
+                  <template name="rejectVendor" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+                <p/>                
+          	您的注册信息已被驳回！
+          <br/>
+                <br/>
+                <br/>            
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+            </body>
+          </html>
+        ]]>
+    </template>
+        <template name="backpassword" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+                <p/>                
+          	系统重置密码是$password
+          <br/>
+                <br/>
+                <br/>            
+                <br/>
+                <p/>
+                <hr/>
+                本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+                
+            </body>
+          </html>
+        ]]>
+    </template>
+    <template name="defaultTemp" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+          <br/>
+          $tempMessage
+                <br/>
+                系统链接：$link
+                <p/>
+                <hr/>
+                
+                $signText
+                <p/>
+                
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    <template name="drawingTemp" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+          <br/>
+                您有新的图纸信息，请注意查看。
+            </body>
+          </html>
+        ]]>
+    </template>
+    <template name="PurchaseOrderItemPlanTask" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+          <br/>
+          $tempMessage
+                <br/>
+                系统链接：$link
+                <p/>
+                <hr/>
+                
+                $signText
+                <p/>
+            </body>
+          </html>
+        ]]>
+    </template>
+    <template name="publishTotal" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $vendorName，您好：
+          <br/>
+          $tempMessage
+                <br/>
+                <hr/>
+               本邮件由系统自动发出，请勿回复！
+                <p/>
+                $signText
+                <p/>
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+        <template name="proplanUpate" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $userName，您好：
+          <br/>
+          $planUpdateMsg
+                <br/>
+                <hr/>
+               本邮件由系统自动发出，请勿回复！
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    <template name="protrackDeal" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      $userName，您好：
+          <br/>
+          活动已开始跟踪,跟踪活动名称为 $planName,请注意及时处理!
+                <br/>
+                <hr/>
+               本邮件由系统自动发出，请勿回复！
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    
+    
+     <template name="mailSendTemp" sender="" subject="">
+        <![CDATA[
+          <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <style>
+                    body{
+                        font-size:9pt;
+                    }
+                </style>
+            </head>
+            <body>
+      			Hi,$vendorName：
+          <br/>
+          $tempMessage
+                <br/>
+               System link：$link
+                <p/>
+                <hr/>
+                
+                $signText
+                <p/>
+                
+            </body>
+          </html>
+        ]]>
+    </template>
+    
+    
+</configs>

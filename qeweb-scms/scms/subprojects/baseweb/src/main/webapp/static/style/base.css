@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  background-color: #ffffff;
+  line-height: normal;
+}
+
+input{
+	font-size: 12px;
+}
+
+form th,form td{
+	padding:5px;
+}
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+a:hover,
+a:active {
+  outline: 0;
+}
+
+
+#header{
+	height:52px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#title{
+ 	background: #7BABEA;
+	height:50px;
+	margin: 0;
+	padding: 0;
+}
+
+.p-logo{
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 200px;
+	float: left;
+	color : #fff;
+	display: block;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 170px;
+    padding: 0 15px;
+    font-weight: 300;
+}
+
+.p-logo img{
+	margin-top : 2px;
+	margin-left : 3px;
+	height: 100%;
+    width: 100%; 
+}
+
+#user-split{
+	display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 30px;
+    padding: 0 5px;
+    font-weight: 300;
+    color:#fff;
+}
+
+
+
+#user-bar{
+	height:50px;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+#user-style{
+	padding-top:10px;
+	color:#fff;
+}
+
+#user-info{
+	height: 100px;
+	text-align: center;
+	margin-right:10px;
+}
+
+#user-info-tool{
+	height: 25px;
+	color:#ffffff;
+}
+
+#user-info-msg{
+	height: 21px;
+	background: #ffffff;
+	color:#367fa9;
+	margin-left: 6px;
+}
+
+
+
+.p-bts-style{
+	vertical-align: middle;
+}
+
+
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float:right;
+}
+
+/** 表单内的table */
+.form-tb{
+	text-align: right;padding:5px;margin:auto;
+}
+
+.form-tb td{
+	border-top: 0!important;
+}
+
+.form-td td{
+	padding: 5px;
+}
+
+/* 表单每一行 */
+.row-form{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.text-required{
+	color:red;
+}
+
+/* 对easyui样式的复制 */
+.textbox .textbox-text-ex {
+  /*padding: 0px;*/
+}
+
+.col-md-4{
+	float:left;
+	width:33.33%;
+}
+
+/** 对easyui表单的美化 */
+.baseform{
+	margin-top:10px;
+	padding:5px;
+}
+
+.baseform div{
+	fload:left;
+	margin:0 30px 5px 0;
+}
+
+.baseform div>label{
+	clear:left;
+	float:left;
+	text-align:right;
+	width:100px;
+	padding:2px;
+	letter-spacing: 1pt;
+}
+
+.baseform div>select,div>input{
+	width:150px;
+}
+.baseform div>textarea{
+	width:150px;
+	height: 36px;
+}
+
+.baseform div>code{
+	display: inline-block;
+	padding: 4px;
+}
+
+.baseform table>tr{
+	padding: 0;margin: 0;
+}
+
+.baseform table>td{
+	padding: 0;margin: 0;
+}
+
+.baseform .text{
+	padding:4px;
+	vertical-align: bottom;
+	display: inline-block;
+	
+}
+
+.row-btn{
+	padding:0px 5px 0px 5px;
+}
+
+/* ajax操作页面蒙灰效果, 全局使用 */
+/* ----- start ------*/
+.background {
+	display: block;
+	width: 100%;
+	height: 100%;
+/* 	opacity: 0.4; */
+/* 	filter: alpha(opacity = 40); */
+	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+.progressBar {
+/* 	background: #ffffff url('img/common/loading.gif') no-repeat scroll 5px center; */
+/* 	border: solid 2px #86A5AD; */
+	display: block;
+	position: fixed;
+	top: 40%;
+	left: 40%;
+	padding: 10px 50px 10px 50px;
+	text-align: center;
+	line-height: 26px;
+	font-weight: bold;
+	z-index: 2001;
+}
+/* ----- end ------*/
+
+.unauth {
+	margin: 0 auto;
+	width:300px;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 65px;
+	color: red;
+	font-size:14px;
+	background: url("./image/promptImg.gif") no-repeat left center
+}

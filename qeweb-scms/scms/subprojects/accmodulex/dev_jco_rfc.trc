@@ -1,0 +1,30 @@
+
+**** Error file opened at 20170527 100459 GMT+08:00 Rel 3.0.2 (2009-03-29) [720.440]
+Error:  >Sat May 27 10:04:59,932<    >RfcGetException rc (7) message: Unable to interpret 清单中没有数据 as a number.
+<RfcGetException
+
+
+**** Error file opened at 20170527 150251 GMT+08:00 Rel 3.0.2 (2009-03-29) [720.440]
+Error:  >Sat May 27 15:02:51,658<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=10.128.112.132 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.128.112.132:3300' not reached
+TIME        Sat May 27 15:02:51 2017
+RELEASE     720
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nixxi.cpp
+LINE        3286
+DETAIL      NiPConnect2: 10.128.112.132:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION

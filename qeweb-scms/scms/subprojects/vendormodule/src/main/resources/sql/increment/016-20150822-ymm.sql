@@ -1,0 +1,9 @@
+Insert into QEWEB_VIEW
+   (ID, VIEW_CODE, VIEW_NAME, VIEW_URL, VIEW_TYPE, 
+    PARENT_ID, IS_LEAF, MENU_SN, ABOLISHED, CREATE_TIME, 
+    CREATE_USER_ID, LAST_UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_NAME, UPDATE_USER_NAME)
+ Values
+   (5730425, 'vendor_main_product', '主要产品维护', 'manager/vendor/mainProduct/', 0, 
+    1180, 0, 10, 0, TO_TIMESTAMP('2015/8/22 12:51:32.190000','YYYY/fmMMfm/fmDDfm fmHH24fm:MI:SS.FF'), 
+    1, TO_TIMESTAMP('2015/8/22 12:51:32.190000','YYYY/fmMMfm/fmDDfm fmHH24fm:MI:SS.FF'), 1, '管理员', '管理员');
+COMMIT;

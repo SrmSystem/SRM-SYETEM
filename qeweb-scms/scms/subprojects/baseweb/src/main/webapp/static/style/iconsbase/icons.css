@@ -1,0 +1,31 @@
+/** trash */
+.icon-trash{background:url('icons/trash.png') no-repeat center center;}
+.icon-trash-open{background:url('icons/trash_open.png') no-repeat center center;}
+.icon-trash-empty{background:url('icons/trash_empty.png') no-repeat center center;}
+
+/** setting */
+.icon-setting{background:url('icons/setting.png') no-repeat center center;}
+
+/** page */
+.icon-page{background:url('icons/page.png') no-repeat center center;}
+
+
+/** application */
+.icon-application{background:url('icons/setting.png') no-repeat center center;}
+
+/** information */
+.icon-information-import{background:url('icons/information_import.png') no-repeat center center;}
+
+/** reset */
+.icon-reset{background:url('icons/reset.png') no-repeat center center;}
+
+/** publish */
+.icon-publish{background:url('icons/publish.png') no-repeat center center;}
+.icon-unpublish{background:url('icons/publish_un.png') no-repeat center center;}
+/** imp、exp */
+.icon-imp{background:url('icons/imp.png') no-repeat center center;}
+.icon-exp{background:url('icons/exp.png') no-repeat center center;}
+.icon-server_go{background:url('icons/server_go.png') no-repeat center center;}
+.icon-eye{background:url('icons/eye.png') no-repeat center center;}
+
+.icon-fenlei{background:url('icons/fenlei.png') no-repeat center center;}

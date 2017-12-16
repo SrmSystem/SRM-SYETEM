@@ -1,0 +1,503 @@
+package com.qeweb.scm.purchasemodule.web.vo;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
+
+import com.qeweb.scm.basemodule.entity.FactoryEntity;
+import com.qeweb.scm.basemodule.entity.OrganizationEntity;
+import com.qeweb.scm.basemodule.entity.UserEntity;
+import com.qeweb.scm.purchasemodule.entity.DeliveryItemEntity;
+import com.qeweb.scm.purchasemodule.entity.PurchaseOrderEntity;
+
+public class DeliveryVO implements Serializable{
+	private OrganizationEntity vendor;		//供应商
+	private OrganizationEntity buyer;		//采购商
+	private String receiveOrg;				//收货方
+	private Integer deliveryStatus;			//发货状态 @see PurchaseConstans
+	private Timestamp expectedArrivalTime;	//预计到货时间
+	private Timestamp deliveyTime;			//发货时间(提货时间)
+	private UserEntity deliveryUser;		//发货人
+	private Integer receiveStatus;			//收货状态@see PurchaseConstans
+	private Integer auditStatus;			//审核状态
+	private Long auditUserId;               //审核人
+	private Timestamp auditTime;                 //审核时间
+	private String remark;					//备注
+	private PurchaseOrderEntity order;  	//订单信息
+	private Integer status;					//发货单状态 0:正常 1：失效 
+	private Integer deliveryType;			//发货单类型 针对不同订单创建的发货单 @see OrderType.java
+	private List<DeliveryItemEntity> deliveryItem;
+	
+	private String deliveryAddress;			//收货地址
+	private String deliveryContacter;		//收货联系人
+	private String deliveryTel;				//收货联系电话
+	private String logisticsCompany;		//物流公司
+	private String logisticsContacter;		//物流联系人
+	private String logisticsTel;			//物流联系电话
+	private String deliveryFileName;		//附件名称
+	private String deliveryFilePath;		//附件地址
+	private FactoryEntity factory;//工厂
+    private String rejectReason;//审核驳回原因
+	private String transportType;//运输方式
+	private String version;					//版本号
+	private Double anzpk;//总箱数，供应商填写的
+	private Integer ysts;//运输天数 
+	private Timestamp planDeliveryDate;//预计发货日期
+	
+	private OrganizationEntity logistics;	//物流公司
+	
+	private String purchasingGroupCode;		//采购组编码
+	private Long purchasingGroupId;		//采购组Id
+
+	private String col1;					//收货地址
+	private String col2;					//运输工具
+	private String col3;					//地点
+	private String col4;					//供应商联系人1
+	private String col5;					//收货联系人
+	private String col6;					//收货联系电话
+	private String col7;					//收货地址
+	private String col8;					//物流联系人
+	private String col9;					//供应商上传附件的地址
+	private String col10;					//供应商上传附件的名称
+	private String col11;					//审核的备注
+	private String col12;					//供应商联系电话1
+	private String col13;					//物流联系人电话
+	private String col14;					//物流公司名称(运输商ID)
+	private String col15;					//收货时间(实际提货时间)
+	private String col16;					//发票单号
+	private String col17;					//发票日期
+	private String col18;					//发票金额
+	private String col19;					//预计靠岸时间-
+	private String col20;					//靠岸时间
+	private String col21;					//预计登船时间-
+	private String col22;					//实际登船时间-
+	private String col23;					//采购商审核文件名
+	private String col24;					//采购商审核文件地址
+	private String col25;					//要求提货时间
+	private String col26;					//供应商SiteCode
+	private String col27;
+	private String col28;					//运输商名称
+	private String col29;					//运输商处理时间
+	private String col30;					//国外提货单使用
+	private String col31;					//供应商联系人2
+	private String col32;					//供应商联系电话2
+	private String col33;
+	private String col34;
+	private String col35;
+	public OrganizationEntity getVendor() {
+		return vendor;
+	}
+	public void setVendor(OrganizationEntity vendor) {
+		this.vendor = vendor;
+	}
+	public OrganizationEntity getBuyer() {
+		return buyer;
+	}
+	public void setBuyer(OrganizationEntity buyer) {
+		this.buyer = buyer;
+	}
+	public String getReceiveOrg() {
+		return receiveOrg;
+	}
+	public void setReceiveOrg(String receiveOrg) {
+		this.receiveOrg = receiveOrg;
+	}
+	public Integer getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(Integer deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+	public Timestamp getExpectedArrivalTime() {
+		return expectedArrivalTime;
+	}
+	public void setExpectedArrivalTime(Timestamp expectedArrivalTime) {
+		this.expectedArrivalTime = expectedArrivalTime;
+	}
+	public Timestamp getDeliveyTime() {
+		return deliveyTime;
+	}
+	public void setDeliveyTime(Timestamp deliveyTime) {
+		this.deliveyTime = deliveyTime;
+	}
+	public UserEntity getDeliveryUser() {
+		return deliveryUser;
+	}
+	public void setDeliveryUser(UserEntity deliveryUser) {
+		this.deliveryUser = deliveryUser;
+	}
+	public Integer getReceiveStatus() {
+		return receiveStatus;
+	}
+	public void setReceiveStatus(Integer receiveStatus) {
+		this.receiveStatus = receiveStatus;
+	}
+	public Integer getAuditStatus() {
+		return auditStatus;
+	}
+	public void setAuditStatus(Integer auditStatus) {
+		this.auditStatus = auditStatus;
+	}
+	public Long getAuditUserId() {
+		return auditUserId;
+	}
+	public void setAuditUserId(Long auditUserId) {
+		this.auditUserId = auditUserId;
+	}
+	public Timestamp getAuditTime() {
+		return auditTime;
+	}
+	public void setAuditTime(Timestamp auditTime) {
+		this.auditTime = auditTime;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public PurchaseOrderEntity getOrder() {
+		return order;
+	}
+	public void setOrder(PurchaseOrderEntity order) {
+		this.order = order;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Integer getDeliveryType() {
+		return deliveryType;
+	}
+	public void setDeliveryType(Integer deliveryType) {
+		this.deliveryType = deliveryType;
+	}
+	
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+	public String getDeliveryContacter() {
+		return deliveryContacter;
+	}
+	public void setDeliveryContacter(String deliveryContacter) {
+		this.deliveryContacter = deliveryContacter;
+	}
+	public String getDeliveryTel() {
+		return deliveryTel;
+	}
+	public void setDeliveryTel(String deliveryTel) {
+		this.deliveryTel = deliveryTel;
+	}
+	public String getLogisticsCompany() {
+		return logisticsCompany;
+	}
+	public void setLogisticsCompany(String logisticsCompany) {
+		this.logisticsCompany = logisticsCompany;
+	}
+	public String getLogisticsContacter() {
+		return logisticsContacter;
+	}
+	public void setLogisticsContacter(String logisticsContacter) {
+		this.logisticsContacter = logisticsContacter;
+	}
+	public String getLogisticsTel() {
+		return logisticsTel;
+	}
+	public void setLogisticsTel(String logisticsTel) {
+		this.logisticsTel = logisticsTel;
+	}
+	public String getDeliveryFileName() {
+		return deliveryFileName;
+	}
+	public void setDeliveryFileName(String deliveryFileName) {
+		this.deliveryFileName = deliveryFileName;
+	}
+	public String getDeliveryFilePath() {
+		return deliveryFilePath;
+	}
+	public void setDeliveryFilePath(String deliveryFilePath) {
+		this.deliveryFilePath = deliveryFilePath;
+	}
+	public FactoryEntity getFactory() {
+		return factory;
+	}
+	public void setFactory(FactoryEntity factory) {
+		this.factory = factory;
+	}
+	public String getRejectReason() {
+		return rejectReason;
+	}
+	public void setRejectReason(String rejectReason) {
+		this.rejectReason = rejectReason;
+	}
+	public String getTransportType() {
+		return transportType;
+	}
+	public void setTransportType(String transportType) {
+		this.transportType = transportType;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public Double getAnzpk() {
+		return anzpk;
+	}
+	public void setAnzpk(Double anzpk) {
+		this.anzpk = anzpk;
+	}
+	public Integer getYsts() {
+		return ysts;
+	}
+	public void setYsts(Integer ysts) {
+		this.ysts = ysts;
+	}
+	public Timestamp getPlanDeliveryDate() {
+		return planDeliveryDate;
+	}
+	public void setPlanDeliveryDate(Timestamp planDeliveryDate) {
+		this.planDeliveryDate = planDeliveryDate;
+	}
+	public OrganizationEntity getLogistics() {
+		return logistics;
+	}
+	public void setLogistics(OrganizationEntity logistics) {
+		this.logistics = logistics;
+	}
+	public String getPurchasingGroupCode() {
+		return purchasingGroupCode;
+	}
+	public void setPurchasingGroupCode(String purchasingGroupCode) {
+		this.purchasingGroupCode = purchasingGroupCode;
+	}
+	public Long getPurchasingGroupId() {
+		return purchasingGroupId;
+	}
+	public void setPurchasingGroupId(Long purchasingGroupId) {
+		this.purchasingGroupId = purchasingGroupId;
+	}
+	public String getCol1() {
+		return col1;
+	}
+	public void setCol1(String col1) {
+		this.col1 = col1;
+	}
+	public String getCol2() {
+		return col2;
+	}
+	public void setCol2(String col2) {
+		this.col2 = col2;
+	}
+	public String getCol3() {
+		return col3;
+	}
+	public void setCol3(String col3) {
+		this.col3 = col3;
+	}
+	public String getCol4() {
+		return col4;
+	}
+	public void setCol4(String col4) {
+		this.col4 = col4;
+	}
+	public String getCol5() {
+		return col5;
+	}
+	public void setCol5(String col5) {
+		this.col5 = col5;
+	}
+	public String getCol6() {
+		return col6;
+	}
+	public void setCol6(String col6) {
+		this.col6 = col6;
+	}
+	public String getCol7() {
+		return col7;
+	}
+	public void setCol7(String col7) {
+		this.col7 = col7;
+	}
+	public String getCol8() {
+		return col8;
+	}
+	public void setCol8(String col8) {
+		this.col8 = col8;
+	}
+	public String getCol9() {
+		return col9;
+	}
+	public void setCol9(String col9) {
+		this.col9 = col9;
+	}
+	public String getCol10() {
+		return col10;
+	}
+	public void setCol10(String col10) {
+		this.col10 = col10;
+	}
+	public String getCol11() {
+		return col11;
+	}
+	public void setCol11(String col11) {
+		this.col11 = col11;
+	}
+	public String getCol12() {
+		return col12;
+	}
+	public void setCol12(String col12) {
+		this.col12 = col12;
+	}
+	public String getCol13() {
+		return col13;
+	}
+	public void setCol13(String col13) {
+		this.col13 = col13;
+	}
+	public String getCol14() {
+		return col14;
+	}
+	public void setCol14(String col14) {
+		this.col14 = col14;
+	}
+	public String getCol15() {
+		return col15;
+	}
+	public void setCol15(String col15) {
+		this.col15 = col15;
+	}
+	public String getCol16() {
+		return col16;
+	}
+	public void setCol16(String col16) {
+		this.col16 = col16;
+	}
+	public String getCol17() {
+		return col17;
+	}
+	public void setCol17(String col17) {
+		this.col17 = col17;
+	}
+	public String getCol18() {
+		return col18;
+	}
+	public void setCol18(String col18) {
+		this.col18 = col18;
+	}
+	public String getCol19() {
+		return col19;
+	}
+	public void setCol19(String col19) {
+		this.col19 = col19;
+	}
+	public String getCol20() {
+		return col20;
+	}
+	public void setCol20(String col20) {
+		this.col20 = col20;
+	}
+	public String getCol21() {
+		return col21;
+	}
+	public void setCol21(String col21) {
+		this.col21 = col21;
+	}
+	public String getCol22() {
+		return col22;
+	}
+	public void setCol22(String col22) {
+		this.col22 = col22;
+	}
+	public String getCol23() {
+		return col23;
+	}
+	public void setCol23(String col23) {
+		this.col23 = col23;
+	}
+	public String getCol24() {
+		return col24;
+	}
+	public void setCol24(String col24) {
+		this.col24 = col24;
+	}
+	public String getCol25() {
+		return col25;
+	}
+	public void setCol25(String col25) {
+		this.col25 = col25;
+	}
+	public String getCol26() {
+		return col26;
+	}
+	public void setCol26(String col26) {
+		this.col26 = col26;
+	}
+	public String getCol27() {
+		return col27;
+	}
+	public void setCol27(String col27) {
+		this.col27 = col27;
+	}
+	public String getCol28() {
+		return col28;
+	}
+	public void setCol28(String col28) {
+		this.col28 = col28;
+	}
+	public String getCol29() {
+		return col29;
+	}
+	public void setCol29(String col29) {
+		this.col29 = col29;
+	}
+	public String getCol30() {
+		return col30;
+	}
+	public void setCol30(String col30) {
+		this.col30 = col30;
+	}
+	public String getCol31() {
+		return col31;
+	}
+	public void setCol31(String col31) {
+		this.col31 = col31;
+	}
+	public String getCol32() {
+		return col32;
+	}
+	public void setCol32(String col32) {
+		this.col32 = col32;
+	}
+	public String getCol33() {
+		return col33;
+	}
+	public void setCol33(String col33) {
+		this.col33 = col33;
+	}
+	public String getCol34() {
+		return col34;
+	}
+	public void setCol34(String col34) {
+		this.col34 = col34;
+	}
+	public String getCol35() {
+		return col35;
+	}
+	public void setCol35(String col35) {
+		this.col35 = col35;
+	}
+	public List<DeliveryItemEntity> getDeliveryItem() {
+		return deliveryItem;
+	}
+	public void setDeliveryItem(List<DeliveryItemEntity> deliveryItem) {
+		this.deliveryItem = deliveryItem;
+	}
+	
+}

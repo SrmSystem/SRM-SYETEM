@@ -1,0 +1,8 @@
+CREATE TABLE QEWEB_USER_DATA
+(
+  ID                NUMBER(19)        PRIMARY KEY          NOT NULL,
+  DATA_IDS          VARCHAR2(2000 BYTE),
+  ROLE_DATA_CFG_ID  NUMBER(19),
+  USER_ID           NUMBER(19),
+  REMARK            VARCHAR2(255 BYTE)
+);

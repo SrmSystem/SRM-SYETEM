@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd" >
+    <description>spring quartz</description>
+
+
+       <!-- 公司接口 -->
+   	<bean id="companySyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.CompanySyncTask</value>
+		</property>
+		<property name="description">
+			<value>公司数据 </value>
+		</property>
+		<property name="durability" value="true" />
+		 <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="companySyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="companySyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+             <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+     <!-- 工厂接口 -->
+   	<bean id="factorySyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.FactorySyncTask</value>
+		</property>
+		<property name="description">
+			<value>工厂数据 </value>
+		</property>
+		<property name="durability" value="true" />
+		 <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="factorySyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="factorySyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+    
+         <!-- 采购组接口 -->
+   	<bean id="groupSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.GroupSyncTask</value>
+		</property>
+		<property name="description">
+			<value>采购组数据 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="groupSyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="groupSyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+             <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+    
+             <!-- 采购组织接口 -->
+   	<bean id="orgSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.OrgSyncTask</value>
+		</property>
+		<property name="description">
+			<value>采购组数据 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="orgSyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="orgSyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+              <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+    
+      <!-- 公司和工厂接口 -->
+   	<bean id="companyFactoryRelSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.CompanyFactoryRelSyncTask</value>
+		</property>
+		<property name="description">
+			<value> 公司和工厂 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="companyFactoryRelSyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="companyFactoryRelSyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+              <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+    
+          <!-- 采购组和工厂和工厂接口 -->
+   	<bean id="groupFactoryRelSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.GroupFactoryRelSyncTask</value>
+		</property>
+		<property name="description">
+			<value>采购组和工厂 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="groupFactoryRelSyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="groupFactoryRelSyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+    
+    
+    
+     <!-- 采购组织和工厂接口 -->
+   	<bean id="orgFactoryRelSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.qeweb.scm.basemodule.task.OrgFactoryRelSyncTask</value>
+		</property>
+		<property name="description">
+			<value>采购组和工厂数据 </value>
+		</property>
+		<property name="durability" value="true" />
+		  <property name="requestsRecovery" value="true" />       
+	</bean>
+	
+	<bean id="orgFactoryRelSyncaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="orgFactoryRelSyncTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 0 * * ?</value><!-- 每天晚上24点出发 -->
+        </property>
+    </bean>
+
+   
+   
+   
+   
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+	<excludes>
+		<pattern>/*static/*</pattern>
+		<pattern>/*api/*</pattern>
+		<pattern>/*webservice/*</pattern>
+		<pattern>/*statisticsProject1/*</pattern>
+		<pattern>/*common/funcs</pattern>
+		<pattern>/*manager/order/printdelivery/maxPackage/*</pattern>
+		<pattern>/*manager/order/printdelivery/minPackage/*</pattern>
+	</excludes>
+	
+	<decorator name="public" page="font/default.jsp">
+		<pattern>/*public/*</pattern>
+	</decorator>
+	<decorator name="vendor" page="font/default-active.jsp">
+		<pattern>/*vendor/active</pattern>
+		<pattern>/*vendor/active/waitingConfirm</pattern>
+	</decorator>
+	
+	<decorator name="back" page="back/default.jsp">
+		<pattern>/*manager</pattern>
+	</decorator>
+	
+	<decorator name="manager" page="back/default-manager.jsp">
+		<pattern>/*manager/*/*</pattern>
+		
+	</decorator>
+
+</decorators>

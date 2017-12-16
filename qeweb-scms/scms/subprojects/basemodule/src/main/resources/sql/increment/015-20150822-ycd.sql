@@ -1,0 +1,1 @@
+alter table qeweb_area add(code nvarchar2(64));
